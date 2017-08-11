@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configurations XML_version="1.2" id="configurations_0">
+<configuration XML_version="1.2" id="Texas Instruments XDS100v2 USB Debug Probe_0">
+        <instance XML_version="1.2" desc="Texas Instruments XDS100v2 USB Debug Probe_0" href="connections/TIXDS100v2_Connection.xml" id="Texas Instruments XDS100v2 USB Debug Probe_0" xml="TIXDS100v2_Connection.xml" xmlpath="connections"/>
+        <connection XML_version="1.2" id="Texas Instruments XDS100v2 USB Debug Probe_0">
+            <instance XML_version="1.2" href="drivers/tixds100v2icepick_d.xml" id="drivers" xml="tixds100v2icepick_d.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2cs_dap.xml" id="drivers" xml="tixds100v2cs_dap.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2cortexM.xml" id="drivers" xml="tixds100v2cortexM.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2cs_child.xml" id="drivers" xml="tixds100v2cs_child.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2cortexA.xml" id="drivers" xml="tixds100v2cortexA.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2csstm.xml" id="drivers" xml="tixds100v2csstm.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2etbcs.xml" id="drivers" xml="tixds100v2etbcs.xml" xmlpath="drivers"/>
+            <instance XML_version="1.2" href="drivers/tixds100v2pru.xml" id="drivers" xml="tixds100v2pru.xml" xmlpath="drivers"/>
+            <platform XML_version="1.2" id="platform_0">
+                <instance XML_version="1.2" desc="ICE_AM3359_0" href="boards/am3359_ice.xml" id="ICE_AM3359_0" xml="am3359_ice.xml" xmlpath="boards"/>
+                <board XML_version="1.2" description="AM3359 Industrial Communications Engine" id="ICE_AM3359_0">
+                    <device HW_revision="1" XML_version="1.2" description="AM33x - Cortex A8 Embedded Processor" id="AM3359_0" partnum="AM3359" simulation="no">
+                        <router HW_revision="1.0" XML_version="1.2" description="ICEPick_D Router" id="IcePick_D_0" isa="ICEPICK_D">
+                            <subpath id="subpath_11">
+                                <router HW_revision="1.0" XML_version="1.2" description="CS_DAP Router" id="CS_DAP_M3" isa="CS_DAP">
+                                    <subpath id="M3_wakeupSS_sp">
+                                        <cpu HW_revision="1.0" XML_version="1.2" desc="M3_wakeupSS_0" description="Cortex_M3 CPU" deviceSim="false" id="M3_wakeupSS" isa="Cortex_M3">
+                                            <property Type="choicelist" Value="1" id="bypass"/>
+                                        </cpu>
+                                    <cpu HW_revision="1.0" XML_version="1.2" description="Cross Triggering" deviceSim="false" id="ICECrusherCS_0" isa="cs_child">
+                                            <property Type="choicelist" Value="1" id="bypass"/>
+                                        </cpu>
+                                    </subpath>
+                                <property Type="choicelist" Value="1" id="bypass"/>
+                                </router>
+                            </subpath>
+                        <subpath id="subpath_12">
+                                <router HW_revision="1.0" XML_version="1.2" description="CS_DAP Router" id="CS_DAP_0" isa="CS_DAP">
+                                    <subpath id="ModenaSS">
+                                        <cpu HW_revision="1.0" XML_version="1.2" description="Cortex_A8 CPU" deviceSim="false" id="CortexA8" isa="Cortex_A8">
+                                            <property Type="filepathfield" Value="TMDXICE3359.gel" id="GEL File"/>
+                                        </cpu>
+                                    <cpu HW_revision="1.0" XML_version="1.2" description="Cross Triggering" deviceSim="false" id="ICECrusherCS_1" isa="cs_child">
+                                            <property Type="choicelist" Value="0" id="bypass"/>
+                                        </cpu>
+                                    </subpath>
+                                    <subpath id="PRU">
+                                        <cpu HW_revision="1.0" XML_version="1.2" description="PRU Accelerator" deviceSim="false" id="PRU_0" isa="TMS192C2026">
+                                            <property Type="filepathfield" Value="" id="GEL File"/>
+                                        <property Type="choicelist" Value="1" id="bypass"/>
+                                        </cpu>
+                                        <cpu HW_revision="1.0" XML_version="1.2" description="PRU Accelerator" deviceSim="false" id="PRU_1" isa="TMS192C2026">
+                                            <property Type="filepathfield" Value="" id="GEL File"/>
+                                        <property Type="choicelist" Value="1" id="bypass"/>
+                                        </cpu>
+                                    </subpath>
+                                <subpath id="Trace_STM">
+                                        <cpu HW_revision="1.0" XML_version="1.2" description="CS System Trace" deviceSim="false" id="CSSTM_0" isa="TMS470R26X">
+                                            <property Type="choicelist" Value="1" id="bypass"/>
+                                        </cpu>
+                                        <cpu HW_revision="1.0" XML_version="1.2" description="CS Embedded Trace Buffer" deviceSim="false" id="CSETB_0" isa="CS_ETB">
+                                            <property Type="choicelist" Value="1" id="bypass"/>
+                                        </cpu>
+                                    </subpath>
+                                </router>
+                            </subpath>
+                        </router>
+                    </device>
+                </board>
+            </platform>
+        </connection>
+    </configuration>
+</configurations>

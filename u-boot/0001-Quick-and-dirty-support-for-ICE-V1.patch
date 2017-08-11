@@ -1,0 +1,70 @@
+From 13168a8c7f1568e420cb9dc3e2bef691dc1189b8 Mon Sep 17 00:00:00 2001
+From: Bjarne Steinsbo
+Date: Sun, 6 Aug 2017 13:21:51 +0200
+Subject: [PATCH 1/2] Quick-and-dirty support for ICE V1
+
+---
+ configs/am335x_icev1_defconfig | 51 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+ create mode 100644 configs/am335x_icev1_defconfig
+
+diff --git a/configs/am335x_icev1_defconfig b/configs/am335x_icev1_defconfig
+new file mode 100644
+index 0000000..b1e8027
+--- /dev/null
++++ b/configs/am335x_icev1_defconfig
+@@ -0,0 +1,51 @@
++CONFIG_ARM=y
++CONFIG_AM33XX=y
++# CONFIG_SPL_NAND_SUPPORT is not set
++CONFIG_TARGET_AM335X_EVM=y
++CONFIG_SPL_SPI_FLASH_SUPPORT=y
++CONFIG_SPL_SPI_SUPPORT=y
++CONFIG_SPL_STACK_R_ADDR=0x82000000
++CONFIG_DISTRO_DEFAULTS=y
++CONFIG_FIT=y
++CONFIG_SYS_EXTRA_OPTIONS="AM335X_MINIMAL"
++CONFIG_SPI_BOOT=y
++CONFIG_SYS_CONSOLE_INFO_QUIET=y
++CONFIG_CONS_INDEX=6
++CONFIG_VERSION_VARIABLE=y
++CONFIG_SPL=y
++CONFIG_SPL_STACK_R=y
++# CONFIG_SPL_MUSB_NEW_SUPPORT=y
++# CONFIG_CMD_IMLS is not set
++CONFIG_CMD_ASKENV=y
++# CONFIG_CMD_FLASH is not set
++CONFIG_CMD_MMC=y
++CONFIG_CMD_SF=y
++CONFIG_CMD_SPI=y
++CONFIG_CMD_I2C=y
++# CONFIG_CMD_USB=y
++#CONFIG_CMD_DFU=y
++CONFIG_CMD_GPIO=y
++# CONFIG_CMD_SETEXPR is not set
++CONFIG_CMD_EXT4_WRITE=y
++CONFIG_DFU_MMC=y
++CONFIG_DFU_RAM=y
++CONFIG_SPI_FLASH=y
++CONFIG_SPI_FLASH_WINBOND=y
++CONFIG_SYS_NS16550=y
++CONFIG_USB=y
++CONFIG_USB_MUSB_HOST=y
++CONFIG_USB_MUSB_GADGET=y
++# CONFIG_USB_STORAGE is not set
++CONFIG_USB_GADGET=y
++CONFIG_USB_GADGET_DOWNLOAD=y
++CONFIG_G_DNL_MANUFACTURER="Texas Instruments"
++CONFIG_G_DNL_VENDOR_NUM=0x0451
++CONFIG_G_DNL_PRODUCT_NUM=0xd022
++CONFIG_OF_LIBFDT=y
++CONFIG_DM_I2C=y
++# CONFIG_TIMER is not set
++# CONFIG_OMAP_TIMER is not set
++# CONFIG_DM_MMC is not set
++# CONFIG_DM_MMC_OPS is not set
++# CONFIG_DM_ETH is not set
++# CONFIG_SYS_ICACHE_OFF is not set
+-- 
+2.7.4
+
