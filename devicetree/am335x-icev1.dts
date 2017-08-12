@@ -309,6 +309,13 @@
 			AM33XX_IOPAD(0x878, PIN_INPUT | MUX_MODE5) /* (U18) gpmc_be1n.pr1_mii1_rxlink */
 		>;
 	};
+
+	dcan0_pins_default: dcan0_pins_default {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x974, PIN_INPUT | MUX_MODE2) /* (E16) uart0_txd.dcan0_rx */
+			AM33XX_IOPAD(0x970, PIN_OUTPUT | MUX_MODE2) /* (E15) uart0_rxd.dcan0_tx */
+		>;
+	};
 };
 
 &i2c0 {
@@ -517,6 +524,12 @@
 &uart5 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&uart5_pins_default>;
+	status = "okay";
+};
+
+&dcan0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&dcan0_pins_default>;
 	status = "okay";
 };
 
