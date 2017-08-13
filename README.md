@@ -22,6 +22,8 @@ A basic device tree file can be found in the `devicetree` directory.  It should 
 
 The kernel included in ti-processor-sdk-linux-am335x-evm-04.00.00.04 contains a bug in the prueth driver.  Apply patch found in the ti-linux-kernel directory if applicable to your kernel.
 
+The board requires the PRU internal mux register to be set to 1 (default value is 0) for the pin mux used for Ethernet port 0.  The patch to the pruss driver found in the ti-linux-kernel directory adds a quick hack to accomplish this.
+
 One final note of warning: the list of ttys in the `/etc/securettys` stops at ttyS3.  Add ttyS5 to this list in order to be allowed to log on as root over the default serial connection.
 
 Bootlog:

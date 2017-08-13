@@ -538,6 +538,7 @@
 
 	pruss: pruss@4a300000 {
 		status = "okay";
+		pin-mx = <1>;
 
 		pru0: pru@4a334000 {
 			status = "okay";

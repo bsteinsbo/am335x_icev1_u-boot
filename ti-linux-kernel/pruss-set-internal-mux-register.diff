@@ -1,0 +1,39 @@
+diff --git a/drivers/remoteproc/pruss.c b/drivers/remoteproc/pruss.c
+index e976038..5f57b0d 100644
+--- a/drivers/remoteproc/pruss.c
++++ b/drivers/remoteproc/pruss.c
+@@ -457,6 +457,13 @@ void pruss_cfg_xfr_enable(struct pruss *pruss, bool enable)
+ }
+ EXPORT_SYMBOL_GPL(pruss_cfg_xfr_enable);
+ 
++static void pruss_cfg_pin_mx_set(struct pruss *pruss, u32 mux_sel)
++{
++	mutex_lock(&pruss->cfg_lock);
++	pruss_set_reg(pruss, PRUSS_MEM_CFG, PRUSS_CFG_PIN_MX, 0x3, mux_sel);
++	mutex_unlock(&pruss->cfg_lock);
++}
++
+ static const struct of_device_id pruss_of_match[];
+ 
+ static const
+@@ -485,6 +492,7 @@ static int pruss_probe(struct platform_device *pdev)
+ 	struct pruss *pruss;
+ 	struct resource *res;
+ 	int ret, i;
++	u32 mx_val;
+ 	const struct pruss_private_data *data;
+ 	const char *mem_names[PRUSS_MEM_MAX] = { "dram0", "dram1", "shrdram2",
+ 						 "cfg", "iep", "mii_rt" };
+@@ -547,6 +555,12 @@ static int pruss_probe(struct platform_device *pdev)
+ 		goto err_of_fail;
+ 	}
+ 
++	/* Set PRU internal mux register (optional) */
++	ret = of_property_read_u32(node, "pin-mx", &mx_val);
++	if (!ret)
++	{
++		pruss_cfg_pin_mx_set(pruss, mx_val);
++	}
+ 	return 0;
+ 
+ err_of_fail:
